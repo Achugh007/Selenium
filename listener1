@@ -1,0 +1,35 @@
+import unittest
+from selenium import webdriver
+from selenium.webdriver.support.events import EventFiringWebDriver, AbstractEventListener
+
+class CustomListener(AbstractEventListener):
+    def before_navigate_to(self, url, driver):
+        print("Before navigating to:", url)
+
+    def after_navigate_to(self, url, driver):
+        print(f"After navigating to: ", url)
+
+class Test(unittest.TestCase):
+    def test_logging_file(self):
+
+        driver_plain = webdriver.Chrome(executable_path=r'C://Selenium_Libraries//chromedriver_win32//chromedrive.exe')
+        edriver = EventFiringWebDriver(driver_plain, MyListener())
+        edriver.get("https://google.com")
+        edriver.find_element_by_name("q").send_keys("Even")
+        edriver.find_element_by_xpath("/html/body/dive[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input").click()
+
+        if __name__ == "__main__":
+            unittest.main()
+
+
+
+
+
+
+
+
+
+
+
+
+
