@@ -1,5 +1,6 @@
 import unittest
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.events import EventFiringWebDriver, AbstractEventListener
 
 class CustomListener(AbstractEventListener):
@@ -62,8 +63,8 @@ class Test(unittest.TestCase):
 
         try:
             edriver.get("http://localhost:1180/ClickMe.html")
-            edriver.find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input').send_keys("Event")
-            edriver.find_element(By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input').click()
+            edriver.find_element(by=By.XPATH, value='/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input').send_keys("Event")
+            edriver.find_element(by=By.XPATH, value='/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input').click()
         except Exception as e:
             print(e)
 
