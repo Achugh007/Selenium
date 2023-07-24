@@ -1,0 +1,18 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import time
+
+option = webdriver.ChromeOptions()
+driver = webdriver.Chrome(options = option)
+
+try:
+    driver.get("http://localhost:1180/ClickMe.html")
+    time.sleep(5)
+    driver.execute_script('return document.getElementById("button").click()')
+
+    print("Test passed!")
+
+except Exception as e:
+    print("Test Failed")
+
+driver.quit()
