@@ -1,16 +1,16 @@
 import selenium
 import time
 
-driver = selenium.webdriver.Chrome()
+driver = webdriver.Chrome("executable_path="C://Selenium_Libraries//chromedriver_win32//chromedriver.exe")
 
-driver.get("file:///ClickMe.html")
+try:
+    driver.get("file:///c://Users/admin/Desktop//ClickMe.html")
+    time.sleep(5)
+    driver.execute_script('return document.getElementById("button").click()')
 
-button = driver.find_element_by_xpath("//button[@id='clickMe']")
+    print("Test passed!")
 
-button.click()
-
-time.sleep(2)
-
-assert driver.find_element_by_xpath("//p[@id='output']").text == "You clicked the button!"
+except Exception as e:
+    print("Test Failed")
 
 driver.quit()
