@@ -65,15 +65,23 @@ class Test(unittest.TestCase):
         try:
             edriver.get("http://localhost:1180/test.html")
 
-            # Wait for 2 seconds before sending keys to the input field
-            time.sleep(2)
-            edriver.find_element(by=By.XPATH, value='/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input').send_keys("Event")
+            # Wait for the input field to be located and become visible
+            input_field = WebDriverWait(edriver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input'))
+            )
+            input_field.send_keys("Event")
 
-            # Wait for 2 seconds before clicking the button
-            time.sleep(2)
-            edriver.find_element(by=By.XPATH, value='/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input').click()
+            # Wait for the button to be located and become clickable
+            button = WebDriverWait(edriver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input'))
+            )
+            button.click()
+
         except Exception as e:
             print(e)
 
-        if __name__ == "__main__":
-            unittest.main()
+        finally:
+            edriver.quit()
+
+if __name__ == "__main__":
+    unittest.main()
