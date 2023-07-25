@@ -1,8 +1,10 @@
 import unittest
-import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.events import EventFiringWebDriver, AbstractEventListener
+
 
 class CustomListener(AbstractEventListener):
     def before_navigate_to(self, url, driver):
@@ -64,19 +66,13 @@ class Test(unittest.TestCase):
 
         try:
             edriver.get("http://localhost:1180/test.html")
+            WebDriverWait(edriver, 10).until(
+                EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input'))
+            ).send_keys("Event")
 
-            # Wait for the input field to be located and become visible
-            input_field = WebDriverWait(edriver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input'))
-            )
-            input_field.send_keys("Event")
-
-            # Wait for the button to be located and become clickable
-            button = WebDriverWait(edriver, 10).until(
+            WebDriverWait(edriver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input'))
-            )
-            button.click()
-
+            ).click()
         except Exception as e:
             print(e)
 
