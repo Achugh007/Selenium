@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test Page</title>
+    <title>HTML Page for Testing Listeners</title>
 </head>
 <body>
+    <h1>HTML Page for Testing Listeners</h1>
 
-<div>
-    <form>
-        <div>
-            <label for="inputField">Enter Text:</label>
-            <input type="text" id="inputField" name="inputField">
-        </div>
-        <div>
-            <button type="button" onclick="clickButton()">Click Me!</button>
-        </div>
-    </form>
-</div>
+    <!-- Button element -->
+    <button id="testButton">Click Me!</button>
 
-<script>
-    function clickButton() {
-        var inputValue = document.getElementById("inputField").value;
-        alert("You clicked the button with input value: " + inputValue);
-    }
-</script>
+    <!-- Input element -->
+    <input type="text" id="testInput" />
 
+    <!-- DIV tag -->
+    <div>
+        <p>This is a DIV tag example.</p>
+    </div>
+
+    <!-- Script to handle the button click event -->
+    <script>
+        function handleClick() {
+            console.log("Button clicked!");
+        }
+
+        const button = document.getElementById("testButton");
+        button.addEventListener("click", handleClick);
+    </script>
 </body>
 </html>
