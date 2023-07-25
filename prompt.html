@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greetings Page</title>
+</head>
+<body>
+    <div id="nameEntry">
+        <p>Hello! Please click on the "Enter Your Name" button.</p>
+        <button onclick="enterName()">Enter Your Name</button>
+    </div>
+
+    <div id="greetingText" style="display:none;">
+        <!-- The greeting message will be displayed here -->
+    </div>
+
+    <script>
+        function enterName() {
+            var fullName = prompt("Please enter your full name:");
+            if (fullName !== null && fullName !== "") {
+                displayGreeting(fullName);
+            }
+        }
+
+        function displayGreeting(name) {
+            var nameEntryDiv = document.getElementById("nameEntry");
+            var greetingTextDiv = document.getElementById("greetingText");
+            greetingTextDiv.innerHTML = "Hello " + name + ", Enjoy browsing through this web application!";
+            nameEntryDiv.style.display = "none";
+            greetingTextDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
