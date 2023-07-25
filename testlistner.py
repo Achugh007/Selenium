@@ -63,16 +63,10 @@ class Test(unittest.TestCase):
 
         try:
             edriver.get("http://localhost:1180/test.html")
-
-            # Wait for the element to be visible before interacting with it
-            element = WebDriverWait(edriver, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input')))
-            
-            # Perform the interaction
-            element.send_keys("Event")
-            element.click()
-
-except Exception as e:
-    print(e)
+            edriver.find_element(by=By.XPATH, value='/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input').send_keys("Event")
+            edriver.find_element(by=By.XPATH, value='/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input').click()
+        except Exception as e:
+            print(e)
 
         if __name__ == "__main__":
             unittest.main()
