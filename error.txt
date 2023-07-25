@@ -1,6 +1,15 @@
+C:\Python310\python.exe "C:/Program Files/JetBrains/PyCharm Community Edition 2023.1.4/plugins/python-ce/helpers/pycharm/_jb_unittest_runner.py" --path C:\Users\Admin\PycharmProjects\pythonProject_test\ListenerTesting.py 
+Testing started at 8:58 PM ...
+Launching unittests with arguments python -m unittest C:\Users\Admin\PycharmProjects\pythonProject_test\ListenerTesting.py in C:\Users\Admin\PycharmProjects\pythonProject_test
+
 Before navigating to: http://localhost:1180/test.html
 After navigating to: http://localhost:1180/test.html
 Before find
+
+
+Ran 1 test in 3.512s
+
+OK
 On exception
 Message: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div[1]/div[2]/form/div[2]/div[1]/div[1]/div/div[2]/input"}
   (Session info: chrome=114.0.5735.248); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
@@ -29,10 +38,5 @@ Backtrace:
 	RtlInitializeExceptionChain [0x77C0B74B+107]
 	RtlClearBits [0x77C0B6CF+191]
 
-
-
-Ran 1 test in 3.411s
-
-OK
 
 Process finished with exit code 0
