@@ -1,0 +1,27 @@
+import org.testng.annotations.Test;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Lab2Test {
+WebDriver driver;
+@Test
+public void f() throws IOException, InterruptedException 
+{ 
+FileReader reader=new FileReader("C:\\Users\\ADMIN\\eclipse-workspace\\Lab2\\src \\searchTerm.properties");
+Properties props=new Properties();
+props.load(reader);
+driver.manage().window().maximize();
+driver.get(props.getProperty("searchTerm"));
+Thread.sleep(2000);
+}
+@BeforeMethod
+public void beforeMethod() {
+System.setProperty("webdriver.chrome.driver", "C:\\Selenium_Libraries\\chromedriver-win32\\chromedriver-win64\\chromedriver.exe");
+driver = new ChromeDriver();
+}
+@AfterMethod
+public void afterMethod() {
+driver.close();
+}
+}
